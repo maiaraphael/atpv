@@ -44,8 +44,8 @@ body {
         box-shadow: none;
         border: none;
 
-        /* Scale content to 85% to be safe and centered */
-        transform: scale(0.85);
+        /* Scale content to 100% as requested */
+        transform: scale(1);
         transform-origin: top center;
     }
 
