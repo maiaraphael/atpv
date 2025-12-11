@@ -49,10 +49,11 @@ body {
         transform-origin: top center;
     }
 
-    /* Hide background elements or extra spacing if needed */
+    /* Show color bar and force print colors */
     .color-bar-bottom {
-        display: none;
-        /* Often bottom bars cause overflow, safer to hide or make very small */
+        display: block !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
     /* Ensure header is compressed as requested */
