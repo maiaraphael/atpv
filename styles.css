@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    /* Standard sans-serif as seen in gov forms */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.page-container {
+    background-color: white;
+    width: 210mm;
+    min-height: 297mm;
+    /* A4 height */
+    padding: 10mm 15mm;
+    /* Margins */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: flex-end;
+    /* Logos are usually on top right or distributed */
+    align-items: center;
+    margin-bottom: 20px;
+    /* height: 80px; Removed fixed height */
+}
+
+.logo-area {
+    display: flex;
+    justify-content: center;
+    /* Center the single image if needed, or stick to default */
+    align-items: center;
+
+}
+
+
+.header-image {
+    width: auto;
+    /* Allow width to scale */
+    max-width: 100%;
+    /* Don't overflow */
+    height: auto;
+    object-fit: contain;
+    max-height: 120px;
+    /* Reasonable header height */
+}
+
+/* Content */
+.content {
+    flex-grow: 1;
+}
+
+.document-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.intent-text {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    /* Close to the box */
+}
+
+.grid-box {
+    border: 1px solid #000;
+    display: grid;
+    /* Default borders for children handled below */
+}
+
+/* Grid Layouts */
+.vehicle-grid {
+    grid-template-columns: 1fr 1fr;
+    /* Two columns */
+}
+
+.seller-grid,
+.buyer-grid {
+    grid-template-columns: 1fr;
+    /* Single column */
+}
+
+/* Fields */
+.field-box {
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+    /* Ensure space for input */
+    position: relative;
+}
+
+/* Remove right border for the last item in a row if it's 2 columns */
+.vehicle-grid .field-box:nth-child(2n) {
+    border-right: none;
+}
+
+/* Remove bottom border for the last row items */
+.vehicle-grid .field-box:nth-last-child(-n+1) {
+    /* Last item (full width) */
+    border-bottom: none;
+    border-right: none;
+}
+
+.vehicle-grid .field-box:nth-child(5) {
+    /* Valor Venda */
+    grid-column: span 2;
+    border-right: none;
+    border-bottom: none;
+}
+
+.vehicle-grid .field-box:nth-child(3) {
+    /* CRV */
+    /* border-right is needed */
+}
+
+
+/* Specific border fixes for Vehicle Grid */
+/* 
+Row 1: Placa (1), Renavam (2) 
+Row 2: CRV (3), Odometro (4)
+Row 3: Valor (5) - Full width
+*/
+
+/* Reset all borders for grid items */
+.grid-box .field-box {
+    border: none;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+/* Right borders */
+.vehicle-grid .field-box:nth-child(2),
+.vehicle-grid .field-box:nth-child(4),
+.vehicle-grid .field-box:nth-child(5) {
+    border-right: none;
+}
+
+/* Bottom borders */
+.vehicle-grid .field-box:nth-child(5) {
+    border-bottom: none;
+}
+
+/* Seller/Buyer Grids (Single Column) */
+.seller-grid .field-box,
+.buyer-grid .field-box {
+    border-right: none;
+}
+
+.seller-grid .field-box:last-child,
+.buyer-grid .field-box:last-child {
+    border-bottom: none;
+}
+
+
+.field-box label {
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 2px;
+}
+
+.field-box input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+    font-family: inherit;
+    margin-top: auto;
+    /* Push to bottom if needed, or just fill */
+}
+
+/* Footer Signature */
+.footer-sign {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signature-line {
+    width: 50%;
+    border-top: 1px solid #000;
+    margin-bottom: 5px;
+}
+
+.signature-info {
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Page Footer Info */
+.page-footer-info {
+    position: absolute;
+    bottom: 25px;
+    /* Above color bar */
+    left: 15mm;
+    right: 15mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #333;
+}
+
+.website-link {
+    font-weight: bold;
+    color: #0066cc;
+    /* Example link color */
+}
+
+.color-bar-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, #005eb8 70%, #009e49 70%);
+    /* Detran/Parana colors approximation */
+}
+
+/* Input focus effect for better UX, though not in printed form */
+.field-box input:focus {
+    background-color: rgba(0, 0, 0, 0.02);
+}
