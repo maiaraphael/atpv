@@ -56,15 +56,6 @@ body {
         print-color-adjust: exact;
     }
 
-    /* Ensure header is compressed as requested */
-    .header-image {
-        max-height: 70px !important;
-    }
-
-    .header {
-        margin-bottom: 10px !important;
-    }
-
     .form-section {
         margin-bottom: 10px !important;
     }
@@ -286,3 +277,4 @@ body {
     background-color: rgba(0, 0, 0, 0.02);
 
 }
+
